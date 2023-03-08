@@ -2,17 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d54e4831-02cc-4e82-b083-87225b051724" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/figs/Benchmark.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/figs/Results.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/figs/boxplot_results.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/figs/columnar-embedding.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/figs/contextual-embedding.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/figs/encoder-decoder.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/figs/ingnn.PNG" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/constants.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/brain.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/brain.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/brain_struct.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/brain_struct.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/building_blocks/decoder_mlp.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/building_blocks/decoder_mlp.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/building_blocks/in_encoder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/building_blocks/in_encoder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/building_blocks/input_graph_embedding.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/building_blocks/input_graph_embedding.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/json_config/no_te__in__cls_decoder/no_te__in__cls_decoder.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/json_config/no_te__in__cls_decoder/no_te__in__cls_decoder.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/trainers/standard_problem_to_opt.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/trainers/standard_problem_to_opt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/trainers/trainer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/trainers/trainer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,6 +32,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="json" value="1" />
+          <entry key="md" value="1" />
           <entry key="py" value="10" />
           <entry key="txt" value="1" />
         </counts>
@@ -41,6 +40,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="JSON" value="1" />
+          <entry key="Markdown" value="1" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="Python" value="10" />
         </counts>
@@ -49,6 +49,7 @@
         <counts>
           <entry key="dummy" value="7" />
           <entry key="json" value="4" />
+          <entry key="md" value="838" />
           <entry key="py" value="28" />
           <entry key="txt" value="49" />
         </counts>
@@ -56,6 +57,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="4" />
+          <entry key="Markdown" value="838" />
           <entry key="PLAIN_TEXT" value="56" />
           <entry key="Python" value="28" />
         </counts>
@@ -91,11 +93,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/trainers/trainer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4904">
+            <state relative-caret-position="-4124">
               <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="400">
+                <caret line="56" column="56" selection-start-line="56" selection-start-column="56" selection-end-line="56" selection-end-column="56" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -105,18 +119,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
               <caret line="11" column="45" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/models/building_blocks/decoder_mlp.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#12#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -152,7 +154,11 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/requirements.txt">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret selection-end-line="9" selection-end-column="12" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -184,6 +190,7 @@
         <option value="$PROJECT_DIR$/src/models/building_blocks/input_graph_embedding.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/src/trainers/trainer.py" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -217,19 +224,7 @@
             <path>
               <item name="INCE" type="b2602c69:ProjectViewProjectNode" />
               <item name="INCE" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="INCE" type="b2602c69:ProjectViewProjectNode" />
-              <item name="INCE" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="INCE" type="b2602c69:ProjectViewProjectNode" />
-              <item name="INCE" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="trainers" type="462c0819:PsiDirectoryNode" />
+              <item name="figs" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -247,6 +242,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Matteo\Documents\work in progress\AI_LAB\INCE\figs" />
       <recent name="C:\Users\Matteo\Documents\work in progress\AI_LAB\INCE" />
     </key>
   </component>
@@ -308,11 +304,11 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24966443" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24966443" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" weight="0.8014184" />
+      <window_info active="true" anchor="bottom" id="Version Control" visible="true" weight="0.59574467" />
       <window_info anchor="bottom" id="Python Console" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
@@ -410,9 +406,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/models/brain.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-650">
@@ -422,8 +415,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/trainers/trainer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4904">
+        <state relative-caret-position="-4124">
           <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="9" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="400">
+            <caret line="56" column="56" selection-start-line="56" selection-start-column="56" selection-end-line="56" selection-end-column="56" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
