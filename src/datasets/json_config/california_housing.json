@@ -1,0 +1,10 @@
+{
+  "dataset_name": "California_Housing",
+  "problem_type": "regression",
+  "data_path": "D:/DATA/CALIFORNIA_HOUSING/data.csv",
+  "problem_size": 1,
+  "percentage_test": 0.2,
+  "use_target_embedding": false,
+  "n_quantile": 0,
+  "output_distribution": "normal"
+}
