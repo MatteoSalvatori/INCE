@@ -21,13 +21,12 @@ class StandardProblemToOpt(object):
     def __call__(self, *args, **kwargs):
         # Model
         print('Building brain...')
-        (general_info, common_info, input_graph_embedding, input_mlp_embedding,
+        (general_info, common_info, input_graph_embedding, _,
          encoder_gnn_info, _, decoder_info) = build_brain_structs(self.dataset_data, self.brain_params)
         # Brain
         brain = Brain(general_info=general_info,
                       common_info=common_info,
                       input_graph_embedding=input_graph_embedding,
-                      input_mlp_embedding=input_mlp_embedding,
                       encoder_gnn_info=encoder_gnn_info,
                       decoder_info=decoder_info,
                       device=self.brain_params[TRAINER_PARAMS][DEVICE]).to(self.brain_params[TRAINER_PARAMS][DEVICE])

@@ -29,8 +29,8 @@ INPUT_EMBEDDING_CON = 'input_embedding_con'
 
 # Brain
 LATENT_SPACE_SIZE = 'latent_space_size'
+CLS_NUM = 'cls_num'
 DROPOUT = 'dropout'
-USE_CLS = 'use_cls'
 GNN_TYPE = 'gnn_type'
 GNN_NUM = 'gnn_num'
 IN_GNN = 'in_gnn'

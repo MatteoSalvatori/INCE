@@ -13,21 +13,12 @@ class Brain(nn.Module):
                  general_info: GeneralInfo,
                  common_info: CommonInfo,
                  input_graph_embedding: InputGraphEmbeddingInfo,
-                 input_mlp_embedding: InputMLPEmbeddingInfo,
                  encoder_gnn_info: GNNEmbeddingInfo,
                  decoder_info: DecoderInfo,
                  device: str):
         super(Brain, self).__init__()
         assert general_info.cat_num == len(general_info.cat_degrees), \
             "cat_num has to be compatible with the len of cat_degrees"
-        assert not ((input_graph_embedding is not None) and (input_mlp_embedding is not None)), \
-            "Only one between input_graph_embedding and input_mlp_embedding can be not None"
-        assert not ((input_graph_embedding is None) and (input_mlp_embedding is None)),\
-            "input_graph_embedding and input_mlp_embedding cannot be simultaneously None"
-
-        # if (encoder_gnn_info is not None) or (encoder_transformer_info is not None):
-        #     assert input_graph_embedding is not None, \
-        #         "With Graph or Transformer encoder, input_graph_embedding is needed"
 
         self.continuous_num = general_info.con_num
         self.categorical_num = general_info.cat_num
@@ -42,8 +33,8 @@ class Brain(nn.Module):
                                                  cat_features_num=general_info.cat_num,
                                                  cat_features_degrees=general_info.cat_degrees,
                                                  latent_space_size=common_info.latent_space_size,
-                                                 use_cls=input_graph_embedding.use_cls)
-        self.use_cls = input_graph_embedding.use_cls
+                                                 cls_num=input_graph_embedding.cls_num)
+        self.cls_num = input_graph_embedding.cls_num
         self.mlp_emb = False
 
         print("\tColumnar Embedding - Number of trainable parameters: {}"
@@ -63,7 +54,7 @@ class Brain(nn.Module):
 
         channels_multiplier = (1 if encoder_gnn_info.in_channel_agg != IN_CHANNEL_AGG_CONCAT else
                                encoder_gnn_info.in_channels)
-        decoder_input_size = common_info.latent_space_size * self.use_cls * channels_multiplier
+        decoder_input_size = common_info.latent_space_size * self.cls_num * channels_multiplier
         decoder_sequence_length = 0
 
         # ===========================================
@@ -96,8 +87,8 @@ class Brain(nn.Module):
 
         if not self.in_multichannel:
             batch_size = features.shape[0]
-            x = (features[:, :self.use_cls, :].reshape(batch_size, -1)
-                 if ((not self.mlp_emb) and self.use_cls > 0) else features)
+            x = (features[:, :self.cls_num, :].reshape(batch_size, -1)
+                 if ((not self.mlp_emb) and self.cls_num > 0) else features)
         else:
             x = features
 

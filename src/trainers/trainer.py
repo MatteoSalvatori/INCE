@@ -1,18 +1,13 @@
 import random
 import time
-from tqdm import tqdm
 from typing import Callable, List, Optional, Tuple
 
 from sklearn.metrics import accuracy_score
+from tqdm import tqdm
 import torch
 import torch.nn as nn
 
 from src.common.constants import *
-
-
-# class WrapperLogging(object):
-#     def __init__(self):
-#         self.handlers = [logging.get_absl_handler()]
 
 
 class Trainer(nn.Module):
@@ -45,9 +40,6 @@ class Trainer(nn.Module):
         self.logger_func = logger_func
         self.test_on_train_dataset = test_on_train_dataset
         self.checkpoint_path = checkpoint_path
-
-    def cross_validation_model(self):
-        pass
 
     def train_model(self,
                     brain: nn.Module,
@@ -157,7 +149,6 @@ class Trainer(nn.Module):
         if progress_bool:
             pbar = tqdm(total=int(dataset_size / batch_size) + 1, desc=title)
 
-        #with logging_redirect_tqdm(loggers=[WrapperLogging()]):
         while True:
             # Batch data preprocessing
             forward_input, targets = self.get_train_batch(data=data,
@@ -226,7 +217,7 @@ class Trainer(nn.Module):
         pbar =None
         if progress_bool:
             pbar = tqdm(total=int(dataset_size / batch_size) + 1, desc=title)
-        #with logging_redirect_tqdm(loggers=[WrapperLogging()]):
+
         with torch.no_grad():
             ini = 0
             fin = ini + batch_size
@@ -260,65 +251,6 @@ class Trainer(nn.Module):
         del pre_list, true_list
         return test_metric, trace_txt
 
-    def predict_cls(self,
-                    brain: nn.Module,
-                    epoch_data_test: List[torch.tensor],
-                    dataset_size: int,
-                    batch_size: int,
-                    device: str,
-                    test_type: str,
-                    extra_text: Optional[str]=None) -> torch.tensor:
-        """ Epoch test
-
-        :param brain: nn.Module to test
-        :param epoch_data_test: List of torch.tensor to use for testing
-        :param dataset_size: int, size of the testing dataset
-        :param batch_size: int
-        :param device: str
-        :param test_type: str to use in the logging
-        :param extra_text: str
-        :return: Tuple[float->metric, str->trace of test results]
-        """
-        start_test = time.time()
-
-        # brain -> eval mode
-        brain.eval()
-
-        # For over the batches of the current epoch
-        pre_list = []
-        title = test_type if extra_text is None else extra_text + test_type
-        progress_bool = False  # TODO: a parámetro!
-        pbar =None
-        if progress_bool:
-            pbar = tqdm(total=int(dataset_size / batch_size) + 1, desc=title)
-        #with logging_redirect_tqdm(loggers=[WrapperLogging()]):
-        with torch.no_grad():
-            ini = 0
-            fin = ini + batch_size
-            while True:
-                # Batch data preprocessing
-                forward_input, targets = self.get_test_batch(data=epoch_data_test,
-                                                             ini=ini,
-                                                             fin=fin,
-                                                             device=device)
-
-                # Test
-                predictions: torch.tensor = brain.forward_cls(*forward_input)
-                pre_list = pre_list + predictions.detach().to('cpu').numpy().tolist()
-
-                if progress_bool:
-                    pbar.update(1)
-                ini = fin
-                fin = min(ini + batch_size, dataset_size)
-                if ini == dataset_size:
-                    break
-                del predictions
-                del targets
-                del forward_input
-                if device == 'cuda':
-                    torch.cuda.empty_cache()
-        return torch.tensor(pre_list)
-
     def get_train_batch(self, data, epoch_shuffle_idx, ini, fin, device):
         raise NotImplementedError
 
@@ -341,66 +273,3 @@ class Trainer(nn.Module):
     def custom_mse(predictions: torch.tensor, targets: torch.tensor) -> torch.tensor:
         loss = torch.nn.MSELoss()
         return loss(predictions.squeeze(), targets.squeeze())          
-         
-    def xai_model(self,
-                  brain: nn.Module,
-                  epoch_data_test: List[torch.tensor],
-                  dataset_size: int,
-                  batch_size: int,
-                  device: str,
-                  test_type: str):
-        """ Epoch test
-
-        :param brain: nn.Module to test
-        :param epoch_data_test: List of torch.tensor to use for testing
-        :param dataset_size: int, size of the testing dataset
-        :param batch_size: int
-        :param device: str
-        :param test_type: str to use in the logging
-        :return: TODO
-        """
-
-        # brain -> eval mode
-        brain.eval()
-
-        # For over the batches of the current epoch
-        node_list = []
-        edge_list = []
-        prediction_list = []
-        emb_ini_list = []
-        title = test_type 
-        progress_bool = False  # TODO: a parámetro!
-        pbar =None
-        if progress_bool:
-            pbar = tqdm(total=int(dataset_size / batch_size) + 1, desc=title)
-        with torch.no_grad():
-            ini = 0
-            fin = ini + batch_size
-            while True:
-                # Batch data preprocessing
-                forward_input, _ = self.get_test_batch(data=epoch_data_test,
-                                                       ini=ini,
-                                                       fin=fin,
-                                                       device=device)
-
-                # Test
-                predictions, nodes, edges, emb_ini = brain.forward_xai(*forward_input)
-                prediction_list = prediction_list + predictions.detach().to('cpu').numpy().tolist()
-                node_list = node_list + nodes.detach().to('cpu').numpy().tolist()
-                emb_ini_list = emb_ini_list + emb_ini.detach().to('cpu').numpy().tolist()
-                if edges is not None:
-                    edge_list = edge_list + edges.detach().to('cpu').numpy().tolist()
-
-                if progress_bool:
-                    pbar.update(1)
-                ini = fin
-                fin = min(ini + batch_size, dataset_size)
-                if ini == dataset_size:
-                    break
-                del nodes
-                del edges
-                del forward_input
-                if device == 'cuda':
-                    torch.cuda.empty_cache()
-    
-        return prediction_list, node_list, edge_list, emb_ini_list

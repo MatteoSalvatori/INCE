@@ -9,7 +9,7 @@ CommonInfo = namedtuple('CommonInfo',
                         'latent_space_size, dropout')
 
 InputGraphEmbeddingInfo = namedtuple('InputGraphEmbeddingInfo',
-                                     'use_cls')
+                                     'cls_num')
 
 InputMLPEmbeddingInfo = namedtuple('InputMLPEmbeddingInfo',
                                    'input_embedding_con')
@@ -31,14 +31,6 @@ def build_brain_structs(dataset_data, brain_params):
     assert not graph_and_mlp_emb,\
         "Input Graph Embedding and Input MLP Embedding cannot be simultaneously enabled"
 
-    gnn_or_transformer = (brain_params[GRAPH_EMBEDDING][ENABLE] or
-                          brain_params[TRANSFORMER_EMBEDDING][ENABLE])
-    # if gnn_or_transformer:
-    #     assert brain_params[INPUT_GRAPH_EMBEDDING][ENABLE], \
-    #         "When GNN or Transformer are used, input_graph_embedding has to be enabled=True"
-    #     assert (not brain_params[INPUT_MLP_EMBEDDING][ENABLE]), \
-    #         "When GNN or Transformer are used, input_mlp_embedding has to be enabled=False"
-
     # Wrapper to Python struct
     general_info = GeneralInfo(con_num=dataset_data.con_num,
                                cat_num=dataset_data.cat_num,
@@ -50,7 +42,7 @@ def build_brain_structs(dataset_data, brain_params):
     input_graph_embedding = None
     if brain_params[INPUT_GRAPH_EMBEDDING][ENABLE]:
         input_graph_embedding = InputGraphEmbeddingInfo(
-            use_cls=brain_params[INPUT_GRAPH_EMBEDDING][USE_CLS])
+            cls_num=brain_params[INPUT_GRAPH_EMBEDDING][CLS_NUM])
 
     input_mlp_embedding = None
     if brain_params[INPUT_MLP_EMBEDDING][ENABLE]:

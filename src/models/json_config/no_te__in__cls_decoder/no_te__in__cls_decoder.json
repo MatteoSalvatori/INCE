@@ -5,7 +5,7 @@
   },
   "input_graph_embedding": {
       "enable": true,
-      "use_cls": 1
+      "cls_num": 1
     },
   "input_mlp_embedding": {
       "enable": false,
