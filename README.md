@@ -32,17 +32,17 @@ among all the nodes - original features and CLS virtual
 node - and enhances their representation. The resulting
 CLS virtual node is sent into the final classifier/regressor
 
-![alt text](./figs/contextual-embedding.png)
+![alt text](./figs/contextual-embedding.PNG)
 
 Schematic workflow of Interaction Network
 
-![alt text](./figs/ingnn.png)
+![alt text](./figs/ingnn.PNG)
 
 ## Main Results
 
 INCE has been tested on the benchmark described in the table below:
 
-![alt text](./figs/Benchmark.png)
+![alt text](./figs/Benchmark.PNG)
 
 and compared with the following baselines: 
 
@@ -56,7 +56,7 @@ VIME, TabTrasformer, NODE, Net-DNF, SAINT, FT-Transformer.
 
 The main results are summarized in table and plot shown below:
 
-![alt text](./figs/Results.png)
+![alt text](./figs/Results.PNG)
 
 ![alt text](./figs/boxplot_results.png)
 
