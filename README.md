@@ -60,8 +60,24 @@ The main results are summarized in table and plot shown below:
 
 ![alt text](./figs/boxplot_results.png)
 
-## Hot to use the code
+## How to use the code
 
 Requirements: 
+```bash
+numpy==1.23.5
+pandas==1.5.2
+scikit-learn==1.1.3
+torch==1.13.0+cu117
+torch-cluster==1.6.0+pt113cu117
+torch-geometric==2.2.0
+torch-scatter==2.1.0+pt113cu117
+torch-sparse==0.6.15+pt113cu117
+torch-spline-conv==1.2.1+pt113cu117
+tqdm==4.64.1
+```
 
 Train/Test INCE on California Housing dataset: 
+
+```python
+python main.py TODO
+```
