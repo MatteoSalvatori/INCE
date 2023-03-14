@@ -33,10 +33,6 @@ class Trainer(nn.Module):
             self.criterion = torch.nn.CrossEntropyLoss(weight=weights)
             self.test_criterion = self.custom_accuracy
             self.str_test = 'Accuracy'
-        elif problem_type == EXPLAINABILITY:
-            self.criterion = None  # TODO
-            self.test_criterion = None
-            self.str_test = None
         self.logger_func = logger_func
         self.test_on_train_dataset = test_on_train_dataset
         self.checkpoint_path = checkpoint_path

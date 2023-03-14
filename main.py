@@ -1,16 +1,15 @@
 from src.common.constants import *
+from src.common.input_parser import *
 from src.common.loads_functions import *
 from src.datasets.dataset_factory import DatasetFactory
 from src.trainers.standard_problem_to_opt import StandardProblemToOpt
 
 
 def main():
-    #parser = get_parser_general_test_without_optimization()
-    #args = parser.parse_args()
-    #data_json_path = args.dataset_config
-    #brain_trainer_json_path = args.model_config
-    data_json_path = "./src/datasets/json_config/california_housing.json"
-    brain_trainer_json_path = "./src/models/json_config/no_te__in__cls_decoder/no_te__in__cls_decoder.json"
+    parser = get_parser_general_test_without_optimization()
+    args = parser.parse_args()
+    data_json_path = args.dataset_config
+    brain_trainer_json_path = args.model_config
     dataset_params, brain_params = load_config_json([data_json_path, brain_trainer_json_path])
     dataset_data = DatasetFactory(dataset_params=dataset_params)()
     to_opt = StandardProblemToOpt(dataset_data=dataset_data,

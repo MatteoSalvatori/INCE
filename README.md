@@ -116,7 +116,7 @@ The main results are summarized in table and plot shown below:
 <td style="width: 12.5%; height: 36px; text-align: center;" rowspan="2"><strong>Dataset</strong></td>
 <td style="width: 12.5%; height: 36px; text-align: center;" rowspan="2"><strong>Metrics</strong></td>
 <td style="width: 25%; height: 18px; text-align: center;" colspan="2"><strong>Best tree</strong></td>
-<td style="width: 25%; height: 18px; text-align: center;" colspan="2"><strong>Best Dell</strong></td>
+<td style="width: 25%; height: 18px; text-align: center;" colspan="2"><strong>Best DL</strong></td>
 <td style="width: 25%; height: 18px; text-align: center;" colspan="2"><strong>INCE</strong></td>
 </tr>
 <tr style="height: 18px;">
@@ -213,5 +213,5 @@ tqdm==4.64.1
 Train/Test INCE on California Housing dataset: 
 
 ```python
-python main.py TODO
+python main.py -d ./src/datasets/json_config/california_housing.json -m ./src/models/json_config/INCE.json
 ```
