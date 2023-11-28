@@ -1,7 +1,7 @@
 # Interaction Network Contextual Embedding (INCE)
 
-Simple implementation of INCE, the algorithm described in _"Graph Neural Network Contextual Embedding for
-Deep Learning on Tabular Data"_
+Simple implementation of INCE, the algorithm described in [_"Graph Neural Network Contextual Embedding for
+Deep Learning on Tabular Data"_](https://arxiv.org/abs/2303.06455)
 
 ## Model Description
 
@@ -215,3 +215,18 @@ Train/Test INCE on California Housing dataset:
 ```python
 python main.py -d ./src/datasets/json_config/california_housing.json -m ./src/models/json_config/INCE.json
 ```
+
+
+## Citation
+
+If you use this codebase, please cite our work:
+```bib
+@article{villaizan2023graph,
+    title="{Graph Neural Network contextual embedding for Deep Learning on Tabular Data}",
+    author={Villaizán-Vallelado, Mario and Salvatori, Matteo and Carro Martinez, Belén and Sanchez Esguevillas, Antonio Javier},
+    year={2023},
+    journal={arXiv preprint arXiv:2303.06455},
+    url={https://arxiv.org/pdf/2303.06455.pdf}
+}
+```
+
