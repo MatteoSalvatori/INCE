@@ -157,7 +157,7 @@ class Trainer(nn.Module):
             predictions: torch.tensor = brain.forward(*forward_input)  # Shape: [batch_size, class_num]
             total_loss_function = self.criterion(predictions, targets.squeeze().detach())
             total_loss_function.backward()
-            torch.nn.utils.clip_grad_value_(self.parameters(), 1.0)
+            torch.nn.utils.clip_grad_value_(brain.parameters(), 1.0)
             optimizer.step()
 
             # Trace
