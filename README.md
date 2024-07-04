@@ -1,7 +1,7 @@
 ﻿# Interaction Network Contextual Embedding (INCE)
 
 Simple implementation of INCE, the algorithm described in [_"Graph Neural Network Contextual Embedding for
-Deep Learning on Tabular Data"_](https://arxiv.org/abs/2303.06455)
+Deep Learning on Tabular Data"_](https://doi.org/10.1016/j.neunet.2024.106180)
 
 ## Model Description
 
@@ -226,7 +226,10 @@ If you use this codebase, please cite our work:
     author={Villaizán-Vallelado, Mario and Salvatori, Matteo and Carro Martinez, Belén and Sanchez Esguevillas, Antonio Javier},
     year={2024},
     journal={Neural Networks},
-    url={https://arxiv.org/pdf/2303.06455.pdf}
+    volume={173},
+    issn={0893-6080},
+    doi={10.1016/j.neunet.2024.106180},
+    url={https://www.sciencedirect.com/science/article/pii/S0893608024001047}
 }
 ```
 
